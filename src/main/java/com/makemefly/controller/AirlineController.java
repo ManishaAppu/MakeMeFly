@@ -1,5 +1,6 @@
 package com.makemefly.controller;
 
+import com.makemefly.dto.AirlineDTO;
 import com.makemefly.entity.Airline;
 import com.makemefly.service.AirlineService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class AirlineController {
     }
 
     @PostMapping(value = "/addAirline")
-    public Airline addAirline(@RequestBody Airline airline){
+    public Airline addAirline(@RequestBody AirlineDTO airline){
         return airlineService.addAirline(airline);
     }
 

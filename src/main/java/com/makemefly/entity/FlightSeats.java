@@ -1,11 +1,9 @@
 package com.makemefly.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @AllArgsConstructor
@@ -13,13 +11,20 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @ToString
+@JsonIgnoreProperties("flight")
 public class FlightSeats {
+    public FlightSeats(int flightSeatId) {
+        this.flightSeatId = flightSeatId;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int flightSeatId;
     private String flightSeatNumber;
-    private int flightId;
     private int isBusinessSeat;
+
+    @OneToOne
+    @JoinColumn(name="flightId")
+    private Flight flight;
 
 }

@@ -10,10 +10,13 @@ import javax.persistence.Id;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-@ToString
+@Data
 public class City {
+
+    public City(int cityId) {
+        this.cityId = cityId;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cityId;

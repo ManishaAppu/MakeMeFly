@@ -1,6 +1,8 @@
 package com.makemefly.service;
 
+import com.makemefly.dto.AirlineDTO;
 import com.makemefly.entity.Airline;
+import com.makemefly.mapper.AirlineMapper;
 import com.makemefly.repository.AirlineRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,8 +15,15 @@ public class AirlineService {
     @Autowired
     AirlineRepository airlineRepository;
 
-    public Airline addAirline(Airline a){
-        return airlineRepository.save(a);
+    @Autowired
+    AirlineMapper airlineMapper;
+
+    public Airline addAirline(AirlineDTO a){
+        /*Airline airline = new Airline();
+        airline.setAirlineName(a.getAirlineName());
+        airline.setIaia(a.getIaia());
+        airline.setIsActive(a.getIsActive());*/
+        return airlineRepository.save(airlineMapper.mapToAirline(a));
     }
 
     public List<Airline> getAirlines(){

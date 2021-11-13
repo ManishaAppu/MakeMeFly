@@ -1,31 +1,43 @@
 package com.makemefly.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
-@ToString
+@Data
+@JsonIgnoreProperties("flight")
 public class FlightSchedule {
+
+    public FlightSchedule(int flightScheduleId) {
+        this.flightScheduleId = flightScheduleId;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int flightScheduleId;
-    private int flightId;
-    private int sourcePlaceId;
-    private int destinationPlaceId;
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
-    private int scheduleDaysId;
     private LocalDateTime scheduledStartDate;
     private LocalDateTime scheduledEndDate;
 
+    @OneToOne
+    @JoinColumn(name="flightId")
+    private Flight flight;
+
+    @OneToOne
+    @JoinColumn(name="departurePlaceId")
+    private City departurePlaceId;
+
+    @OneToOne
+    @JoinColumn(name="destinationPlaceId")
+    private City destinationPlaceId;
+
+    @OneToOne
+    @JoinColumn(name="scheduleDaysId")
+    private ScheduleDays scheduleDays;
 }
