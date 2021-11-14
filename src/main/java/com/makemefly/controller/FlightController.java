@@ -37,4 +37,9 @@ public class FlightController {
         return flightService.getFlightSchedules();
     }
 
+    @PostMapping(value = "/deleteFlight/{flightId}")
+    public int deleteAirline(@PathVariable int flightId){
+        return flightService.deleteFlight(flightId);
+    }
+
 }

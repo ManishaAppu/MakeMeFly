@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@JsonIgnoreProperties("flight")
+//@JsonIgnoreProperties("flight")
 public class FlightSchedule {
 
     public FlightSchedule(int flightScheduleId) {

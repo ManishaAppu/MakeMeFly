@@ -31,4 +31,9 @@ public class AirlineController {
         return airlineService.getAirlines();
     }
 
+    @PostMapping(value = "/deleteAirline/{airlineId}")
+    public int deleteAirline(@PathVariable int airlineId){
+        return airlineService.deleteAirline(airlineId);
+    }
+
 }

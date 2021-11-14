@@ -26,7 +26,7 @@ public interface FlightScheduleRepository extends JpaRepository<FlightSchedule, 
             " inner join City c on fs.departurePlaceId.cityId = c.cityId " +
             " inner join City ct on fs.destinationPlaceId.cityId = ct.cityId " +
             " where fs.departurePlaceId.cityId = :departurePlaceId and fs.destinationPlaceId.cityId = :arrivalPlaceId and" +
-            " :travelDate  between fs.scheduledStartDate and fs.scheduledEndDate")
+            " (:travelDate  between fs.scheduledStartDate and fs.scheduledEndDate) and f.isActive = 1")
     public List<AvailableFlightsDTO> getListOfAvailableFlights(@Param("departurePlaceId")int departurePlaceId, @Param("arrivalPlaceId") int arrivalPlaceId,
                                                                 @Param("travelDate") LocalDateTime travelDate);
 

@@ -27,7 +27,11 @@ public class AirlineService {
     }
 
     public List<Airline> getAirlines(){
-        return airlineRepository.findAll();
+        return airlineRepository.getAllAirlines();
+    }
+
+    public int deleteAirline(int airlineId){
+        return airlineRepository.deleteAirline(airlineId);
     }
 
 

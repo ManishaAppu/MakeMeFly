@@ -66,7 +66,7 @@ public class FlightService {
     }
 
     public List<Flight> getAllFlight(){
-        return flightRepository.findAll();
+        return flightRepository.getAllFlights();
     }
 
     public FlightSchedule scheduleFlight(FlightScheduleDTO flightScheduleDTO){
@@ -98,5 +98,9 @@ public class FlightService {
 
     public List<FlightSchedule> getFlightSchedules(){
         return flightScheduleRepository.findAll();
+    }
+
+    public int deleteFlight(int flightId){
+        return flightRepository.deleteFlight(flightId);
     }
 }
